@@ -4,7 +4,7 @@ Router.route('/',{
 
 Router.route('/login-with-github', {
   template: 'nucleus',
-  action: function() {
+  onAfterAction: function() {
     var subdomain = this.params.query.subdomain,
         serverLoginUrl = subdomain + '/nucleus-github-login'
     ;
@@ -19,7 +19,7 @@ Router.route('/login-with-github', {
 Router.route('/github-auth', {
   name: 'github-auth',
   template: 'nucleus',
-  action: function() {
+  onAfterAction: function() {
     if (this.params.query.subdomain) {
       this.redirect('/login-with-github?subdomain='+this.params.query.subdomain);
     }
